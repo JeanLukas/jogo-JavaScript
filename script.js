@@ -1,3 +1,4 @@
 function iniciaGame(){
-    document.getElementById(nivel_game)
+var nivel_game = document.getElementById('nivel_game').value
+  alert(nivel_game)
 }
