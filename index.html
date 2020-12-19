@@ -6,28 +6,84 @@
     <title>Estoura balões</title>
     <script src="script.js"></script>
     <style>
+       body{
+           background-color: #9D75B4;
+           font: normal 15pt arial;
+       }
         b {
-            font: arial  15pt normal ;
+            margin-left: 45%;
+            font: normal 25pt arial;
+        }
+        select{
+            font: normal 15pt arial;
+            margin-top: 10px;
+            border-radius: 2px ;
+        }
+        select,option:hover{
+            
+            font: normal 15pt arial;
+            border-radius: 2px ;
+            margin-top: 10px;
+        }
+        img{
+            margin-left: 45%;
+        }
+
+        nav ul li {
+        display:inline-block;
+ }
+        nav ul li a {
+            color: black;
+            text-decoration: none;
+            display:block;
+            padding:38px 20px;
+  
+ }
+
+        nav ul li a:hover {
+
+            color: rgb(54, 54, 54);
+            color: #5c0101;
+            text-decoration: none;
+            display:block;
+            padding:38px 20px;
+        }
+
+        #img{
+            margin-left:80%;
         }
     </style>
 </head>
 <body>
+    <nav>
+        <ul>
+
+         <li><a href="menu.html" class="menu" title="Clique aqui para ler como se joga">Tutorial</a></li>
+         <li><a href="menu.html" title="Clique aqui para ler como foi preparado">Modo de Preparo</a></li>
+         <li><a href="menu.html" title="Clique aqui para ler os componentes utilizados">Itens utilizados</a></li>
+
+        </ul>
+       </nav>
     <div>
         <p>
             <b>
                 Nível:
             </b>
             <select id="nivel_game">
-                <option value="1">Nível Fácil</option>
-                <option value="2">Nível Médio</option>
-                <option value="3">Nível Difícil</option>
-                <option value="4">Nível Extremo</option>
+                <option value="1">Nível Super fácil</option>
+                <option value="2">Nível Fácil</option>
+                <option value="3">Nível Médio</option>
+                <option value="4">Nível Difícil</option>
+                <option value="5">Nível Extreme</option>
             </select>
-<br/>
         </p>
         <br/>
         <img src="imagens/play.png" onclick="iniciaGame()"/>
+        
     </div>
+    <img src="imagens/boa sorte.png" id="img"/>
 </body>
+
 <script src="js/script.js"></script>
+
 </html>
