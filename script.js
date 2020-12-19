@@ -16,34 +16,41 @@ function IniciaGame(){
 
    var nivelGame = url.replace("?", "")
 
-   var tempoSegundos = 0; 
+   var tempoSegundos = 0
+
+   let quantidadeDeJs = 0
 
    if(nivelGame == 1){//1 nivel 240 segundos + 48 js
         
     tempoSegundos = 240
+    quantidadeDeJs = 48
    }
 
    if(nivelGame == 2){//2 nivel 120 segundos + 35 js
     tempoSegundos = 120
+    quantidadeDeJs = 35
    }
    
    if(nivelGame == 3){//3 nivel 60  segundos + 24 js
     tempoSegundos = 60
+    quantidadeDeJs = 24
    }
 
    if(nivelGame == 4){//4 nivel 30  segundos + 14 js
     tempoSegundos = 30
+    quantidadeDeJs = 14
    }
 
    if(nivelGame == 5){//5 nivel 15  segundos + 7 js
     tempoSegundos = 15
+     quantidadeDeJs = 7
    }
 
    //inserindo os segundos
    document.getElementById('cronometro').innerHTML = tempoSegundos
    
    //quantidade de baloes
-   let quantidadeJs = 48
+   let quantidadeJs = quantidadeDeJs
    
    criaJs(quantidadeJs)
 
@@ -72,10 +79,12 @@ function IniciaGame(){
    }
 
 function gameOver(){
-
+    
     alert('Fim de jogo, você perdeu.')
 
-}
+    removeEventoEstourar()
+
+}situacaoJogo
 
 function criaJs(quantidadeJs){
 
@@ -93,9 +102,21 @@ function criaJs(quantidadeJs){
 function estourar(e) {
     let idJs = e.id
 
+    document.getElementById(idJs).setAttribute("onclick", "")
     document.getElementById(idJs).src = 'imagens/jssmallestourado.png'
     
     pontuacao(-1)
+}
+
+function removeEventoEstourar(){
+
+    var i = 1 
+
+    while(document.getElementById('b' + 1)){
+       
+        document.getElementById('b' + 1).onclick = ''
+        i++   
+    }
 }
 
 function pontuacao(acao){
