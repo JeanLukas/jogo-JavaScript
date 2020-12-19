@@ -111,4 +111,16 @@ function pontuacao(acao){
     document.getElementById('js_inteiro').innerHTML = jsInteiro
     document.getElementById('js_inteiro').innerHTML = jsEstourado
     
+    situacaoJogo(jsInteiro)
+}
+
+function situacaoJogo(jsInteiro, jsEstourado){
+    if(jsInteiro == 0){
+        alert('Parabéns, você venceu')
+        paraJogo()
+    }
+}
+
+function paraJogo() {
+    clearTimeout(timerId)
 }
