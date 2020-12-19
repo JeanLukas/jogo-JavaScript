@@ -3,57 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="script.js"></script>
     <title>Jogo</title>
    <style>
+       #cronometro1{
+        background: url('imagens/cronometro1.jpg'); 
+        text-align: center;
+       }
+       #fundo{
+        float:left; 
+        width: 640px; 
+        height: 610px; 
+        margin-left: 2px;
+        margin-top: 10px; 
+        background: url('imagens/Cenario\ sonho\ 2\ final.png'); 
+       }
+       #t{
+        width:210px; 
+        height:210px ;
+        
+       }
+       span{
+           color: red;
+           font-size: 30px;
+           font-family: arial;
+        }
        body{
            background-color: #f5e653;
        }
        div{
            margin-left: 20%;
            margin-top: 10px;
+           float:left; 
+           width:auto;
+           background-color: #ffee5a;
+           height:610px;
+           border: solid 1px #a2a2a2;
+           margin-right: 5px;
        }
    </style>
 </head>
-<body>
-    <div style="float:left; width:auto; background-color: #ffee5a; height:600px; border: solid 1px #a2a2a2 ">
+<body onload="IniciaGame()">
+    
+    <div >
         <table border ="1">
         <tr>
             <td>
-                <img src="imagens/js.png">
+                <img src="imagens/js.jpg">
             </td>
             <td>
-                10
+                <span id="js_inteiro" style="font-size: 20px;"></span>
             </td>
         </tr>
     </table>
 
     <br>
 
-    <table border ="1">
+    <table border="1" >
         <tr>
             <td>
                 <img src="imagens/js estourado.jpg">
             </td>
             <td>
-                10
+                <span id="js_estourados" style="font-size: 20px;"></span>
             </td>
         </tr>
     </table>
 
     <br>
 
-    <table border="1" style="width:210px ; height:210px ;" >
+    <table id="t" border="1" >
        <tr>
-           <td style="background: url('imagens/cronometro1.jpg');">
+           <td id="cronometro1">
+            <br>
+            <br>
 
+            <span id="cronometro" >
+
+                </span>
            </td>
        </tr> 
            
     </table>
-
     </div>
-
-
-    <div  style="float:left; width: 640px; height: 600px; margin-left: 2px;margin-top: 10px; background: url('imagens/Cenario\ sonho\ 2\ final.png'); "></div>
+     
+    <div id="fundo"></div>
 </body>
 </html>
