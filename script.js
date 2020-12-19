@@ -55,7 +55,7 @@ function IniciaGame(){
    criaJs(quantidadeJs)
 
    //cria as quantidades
-   document.getElementById('js_inteiro').innerHTML = quantidadeJs
+   document.getElementById('js_inteiros').innerHTML = quantidadeJs
    document.getElementById('js_estourados').innerHTML = 0
 
    contagemTempo(tempoSegundos + 1)
@@ -91,7 +91,7 @@ function criaJs(quantidadeJs){
         for( let i = 1; i <= quantidadeJs; i++) {
 
             let javascript = document.createElement("img")
-            javascript.src = 'imagens/jssmall.png'
+            javascript.src = 'imagens/jssmall1.png'
             javascript.style.margin = '10px'
             javascript.id = 'b' + i
             javascript.onclick = function(){ estourar(this) }
@@ -108,6 +108,28 @@ function estourar(e) {
     pontuacao(-1)
 }
 
+function pontuacao(acao){
+    var jsInteiros = document.getElementById('js_inteiros').innerHTML
+    var jsEstourados = document.getElementById('js_estourados').innerHTML
+    
+    jsInteiros = parseInt(jsInteiros)
+    jsEstourados = parseInt(jsEstourados)
+
+    jsInteiros = jsInteiros + acao
+    jsEstourados = jsEstourados - acao
+
+    document.getElementById('js_inteiros').innerHTML = jsInteiros
+    document.getElementById('js_estourados').innerHTML = jsEstourados
+    
+    situacaoJogo(jsInteiros)
+}
+function situacaoJogo(jsInteiros){
+    if(jsInteiros == 0){
+        alert('Parabéns, você venceu')
+        paraJogo()
+    }
+}
+
 function removeEventoEstourar(){
 
     var i = 1 
@@ -116,29 +138,6 @@ function removeEventoEstourar(){
        
         document.getElementById('b' + 1).onclick = ''
         i++   
-    }
-}
-
-function pontuacao(acao){
-    var jsInteiro = document.getElementById('js_inteiro').innerHTML
-    var jsEstourado = document.getElementById('js_estourado').innerHTML
-    
-    jsInteiro = parseInt(jsInteiro)
-    jsEstourado = parseInt(jsEstourado)
-
-    jsInteiro = jsInteiro + acao
-    jsEstourado = jsEstourado - acao
-
-    document.getElementById('js_inteiro').innerHTML = jsInteiro
-    document.getElementById('js_inteiro').innerHTML = jsEstourado
-    
-    situacaoJogo(jsInteiro)
-}
-
-function situacaoJogo(jsInteiro, jsEstourado){
-    if(jsInteiro == 0){
-        alert('Parabéns, você venceu')
-        paraJogo()
     }
 }
 
