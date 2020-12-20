@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estoura js</title>
+    <title>Jogo</title>
     <script src="script.js"></script>
     <style>
        body{
@@ -11,19 +11,21 @@
            font: normal 15pt arial;
        }
         b {
-            margin-left: 45%;
+            color: white;
+            margin-left: 30%;
             font: normal 25pt arial;
         }
         select{
             font: normal 15pt arial;
             margin-top: 10px;
             border-radius: 2px ;
+            cursor: pointer;
         }
         select,option:hover{
-            
+            cursor: pointer;
             font: normal 15pt arial;
             border-radius: 2px ;
-            margin-top: 10px;
+           
         }
         img{
             margin-left: 45%;
@@ -32,7 +34,7 @@
         nav ul li {
         display:inline-block;
  }
-        nav ul li a {
+nav ul li a {
             color: black;
             text-decoration: none;
             display:block;
@@ -49,8 +51,30 @@
             padding:38px 20px;
         }
 
+
         #img{
             margin-left:80%;
+        }
+        #play{
+        cursor: pointer;
+        padding: 10px;
+        margin-left: 30%;
+        padding-bottom: 20px;
+        }
+        #play:hover{
+            filter: invert(1);
+            cursor: pointer;
+        }
+        .seleciona{
+            margin-top: 10%;
+            margin-left: 30%;
+            margin-right: 30%;
+    
+    border: 2px solid #000;
+    border-radius: 7px;
+    background-color: rgba(0,0,0,0.685);
+    color: #fff;
+    
         }
     </style>
 </head>
@@ -64,7 +88,7 @@
 
         </ul>
        </nav>
-    <div>
+    <div class="seleciona">
         <p>
             <b>
                 Nível:
@@ -78,10 +102,12 @@
             </select>
         </p>
         <br/>
-        <img src="imagens/play.png" onclick="iniciaGame()"/>
+        <img id="play" src="imagens/play.png" onclick="iniciaGame()"/>
         
     </div>
     <img src="imagens/boa sorte.png" id="img"/>
+
+    <script src="js/script.js"></script>
 </body>
 
 <script src="js/script.js"></script>

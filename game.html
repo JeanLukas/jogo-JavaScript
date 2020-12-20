@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jogo</title>
-    <script src="script.js"></script>
+    
    <style>
        #cronometro1{
         background: url('imagens/cronometro1.jpg'); 
@@ -16,11 +16,14 @@
         height: 610px; 
         margin-left: 2px;
         margin-top: 10px; 
-        background: url('imagens/Cenario\ sonho\ 2\ final.png'); 
+        background: url('./imagens/Cenario_sonho_2_final.png'); 
+        border-radius: 7px;
+        border: 2px solid #000;
        }
        #t{
         width:210px; 
-        height:210px ;
+        height:210px;
+      
         
        }
        span{
@@ -41,12 +44,20 @@
            border: solid 1px #a2a2a2;
            margin-right: 5px;
        }
+       #tabela{
+        border-radius: 7px;
+        
+       }
+       #btn{
+        padding: 10px;
+
+       }
    </style>
 </head>
 <body onload="IniciaGame()">
     
-    <div >
-        <table border ="1">
+    <div id="tabela">
+        <table  style="border-radius: 7px;">
         <tr>
             <td>
                 <img src="imagens/js.jpg">
@@ -59,7 +70,7 @@
 
     <br>
 
-    <table border="1" >
+    <table border="1" style="border-radius: 7px;">
         <tr>
             <td>
                 <img src="imagens/js estourado.jpg">
@@ -72,7 +83,7 @@
 
     <br>
 
-    <table id="t" border="1" >
+    <table id="t" border="1" style="border-radius: 7px;" >
        <tr>
            <td id="cronometro1">
             <br>
@@ -86,7 +97,10 @@
            
     </table>
     </div>
-     
+    
+    <input id="btn" action="action" onclick="voltaOpt()" type="submit" value="Voltar"/>
+
     <div id="fundo"></div>
+    <script src="script.js"></script>
 </body>
 </html>
