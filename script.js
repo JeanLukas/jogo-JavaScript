@@ -144,7 +144,8 @@ function removeEventoEstourar(){
 /* criar funçao para mudar cenario no nivel 3
  function mudaCenario(){
      if(nivelGame == 3){
-         
+          document.getElementById('css_inteiros').innerHTML = quantidadeJs;
+          document.getElementById('css_estourados').innerHTML = 0;
      }
  }
  */
