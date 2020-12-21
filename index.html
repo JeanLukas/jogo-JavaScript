@@ -73,8 +73,19 @@
             border-radius: 7px;
             background-color: rgba(0,0,0,0.685);
             color: #fff;
-    
+            
         }
+
+        #fundo{
+        float:left; 
+        width: 640px; 
+        height: 610px; 
+        margin-left: 2px;
+        margin-top: 10px; 
+        background: url('./imagens/Cenario_nivel_1_final.png'); 
+        border-radius: 7px;
+        border: 2px solid #000;
+       }
     </style>
 </head>
 <body onload="boasVindas()">
@@ -101,11 +112,13 @@
             </select>
         </p>
         <br/>
-        <img id="play" src="imagens/play.png" onclick="iniciaGame()"/>
-        
+        <div draggable="false">
+        <img id="play" draggable="false" src="imagens/play.png" onclick="iniciaGame()"/>
     </div>
+    </div>
+    <div draggable="false">
     <img src="imagens/boa sorte.png" id="img"/>
-
+        </div>
     <script src="js/script.js"></script>
 </body>
 </html>

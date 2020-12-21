@@ -10,6 +10,7 @@
         background: url('imagens/cronometro1.jpg'); 
         text-align: center;
        }
+     
        #fundo{
         float:left; 
         width: 640px; 
@@ -17,6 +18,17 @@
         margin-left: 2px;
         margin-top: 10px; 
         background: url('./imagens/Cenario_sonho_2_final.png'); 
+        border-radius: 7px;
+        border: 2px solid #000;
+        
+       }
+       #fundo1{
+        float:left; 
+        width: 640px; 
+        height: 610px; 
+        margin-left: 2px;
+        margin-top: 10px; 
+        background: url('./imagens/cenario_nivel_2.png'); 
         border-radius: 7px;
         border: 2px solid #000;
        }
@@ -67,7 +79,7 @@
 </head>
 <body onload="IniciaGame()">
     
-    <div id="tabela">
+    <div id="tabela"  draggable="false">
         <table border="1" style="border-radius: 7px;">
         <tr>
             <td>
@@ -84,7 +96,7 @@
     <table border="1" style="border-radius: 7px;">
         <tr>
             <td>
-                <img src="imagens/js estourado.jpg">
+                <img  src="imagens/js estourado.jpg">
             </td>
             <td>
                 <span id="js_estourados" style="font-size: 20px;"></span>
@@ -112,6 +124,9 @@
     <input id="btn" action="action" onclick="voltaOpt()" type="submit" value="Voltar"/>
 
     <div id="fundo"></div>
+    
+    
     <script src="script.js"></script>
+    
 </body>
 </html>

@@ -20,30 +20,35 @@ function IniciaGame(){
 
    let quantidadeDeJs = 0;
 
+   var bg = document.getElementById("fundo");
+   bg.style.backgroundImage = `url('./imagens/cenario_nivel_${nivelGame}.png')`;
+
+
    if(nivelGame == 1){//1 nivel 240 segundos + 48 js
         
-    tempoSegundos = 240;
-    quantidadeDeJs = 48;
+    tempoSegundos = 100;
+    quantidadeDeJs = 50;
    }
 
    if(nivelGame == 2){//2 nivel 120 segundos + 35 js
-    tempoSegundos = 120;
-    quantidadeDeJs = 35;
+    
+    tempoSegundos = 60;
+    quantidadeDeJs = 60;
    }
    
    if(nivelGame == 3){//3 nivel 60  segundos + 24 js
-    tempoSegundos = 60;
-    quantidadeDeJs = 24;
+    tempoSegundos = 40;
+    quantidadeDeJs = 40;
    }
 
    if(nivelGame == 4){//4 nivel 30  segundos + 14 js
     tempoSegundos = 30;
-    quantidadeDeJs = 14;
+    quantidadeDeJs = 40;
    }
 
    if(nivelGame == 5){//5 nivel 15  segundos + 7 js
     tempoSegundos = 15;
-     quantidadeDeJs = 7;
+     quantidadeDeJs = 20;
    }
 
    //inserindo os segundos
@@ -141,11 +146,18 @@ function removeEventoEstourar(){
         i++   ;
     }
 }
-/* criar funçao para mudar cenario no nivel 3
+/* criar funçao para mudar cenario no nivel 2
  function mudaCenario(){
-     if(nivelGame == 3){
-          document.getElementById('css_inteiros').innerHTML = quantidadeJs;
-          document.getElementById('css_estourados').innerHTML = 0;
+     if(nivelGame == 2){
+         let javascript = document.createElement("img");
+            javascript.src = 'imagens/jssmall1.png';
+            javascript.style.margin = '10px';
+            javascript.id = 'b' + i;
+            javascript.onclick = function(){ estourar(this) }
+             document.getElementById('fundo1').appendChild(javascript);
+         
+          
+          
      }
  }
  */
@@ -157,9 +169,9 @@ function removeEventoEstourar(){
      }
  }
  */
-/* criar funçao para mudar cenario no nivel 5
+/* criar funçao para mudar cenario no nivel 4
  function mudaCenario1(){
-     if(nivelGame == 5){
+     if(nivelGame == 4){
          
      }
  }
