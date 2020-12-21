@@ -1,132 +1,141 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jogo</title>
-    
-   <style>
-       #cronometro1{
-        background: url('imagens/cronometro1.jpg'); 
-        text-align: center;
-       }
-     
-       #fundo{
-        float:left; 
-        width: 640px; 
-        height: 610px; 
-        margin-left: 2px;
-        margin-top: 10px; 
-        background: url('./imagens/Cenario_sonho_2_final.png'); 
-        border-radius: 7px;
-        border: 2px solid #000;
-        
-       }
-       #fundo1{
-        float:left; 
-        width: 640px; 
-        height: 610px; 
-        margin-left: 2px;
-        margin-top: 10px; 
-        background: url('./imagens/cenario_nivel_2.png'); 
-        border-radius: 7px;
-        border: 2px solid #000;
-       }
-       #t{
-        width:210px; 
-        height:210px;
-      
-        
-       }
-       span{
-           color: red;
-           font-size: 30px;
-           font-family: arial;
+
+    <style>
+        #cronometro1 {
+            background: url('imagens/cronometro1.jpg');
+            text-align: center;
         }
-       body{
-           background-color: #f5e653;
-       }
-       div{
-           margin-left: 20%;
-           margin-top: 10px;
-           float:left; 
-           width:auto;
-           background-color: #ffee5a;
-           height:610px;
-           border: solid 1px #a2a2a2;
-           margin-right: 5px;
-       }
-       #tabela{
-        border-radius: 7px;
-        
-       }
-       #btn{
-        font-size: 2.2em;
-         border-radius: 7px;
-        font-weight: bold;
-    box-shadow: 0.5px 0.5px 0.5px black;
-    text-shadow: 0.1px 0.1px 0.1px;
-    position: absolute;
-    top: 90%;
-    left: 90%;
-    margin-bottom: 0;
-    transform: translate(-50%, -50%);
-    color: white;
-    background-color:rgba(220, 179, 2, 1);
-}
 
-   </style>
+        #fundo {
+            float: left;
+            width: 640px;
+            height: 610px;
+            margin-left: 2px;
+            margin-top: 10px;
+            background: url('./imagens/Cenario_sonho_2_final.png');
+            border-radius: 7px;
+            border: 2px solid #000;
+
+        }
+
+        #fundo1 {
+            float: left;
+            width: 640px;
+            height: 610px;
+            margin-left: 2px;
+            margin-top: 10px;
+            background: url('./imagens/cenario_nivel_2.png');
+            border-radius: 7px;
+            border: 2px solid #000;
+        }
+
+        #t {
+            width: 210px;
+            height: 210px;
+
+
+        }
+
+        span {
+            color: red;
+            font-size: 30px;
+            font-family: arial;
+        }
+
+        body {
+            background-color: #f5e653;
+        }
+
+        div {
+            margin-left: 20%;
+            margin-top: 10px;
+            float: left;
+            width: auto;
+            background-color: #ffee5a;
+            height: 610px;
+            border: solid 1px #a2a2a2;
+            margin-right: 5px;
+        }
+
+        #tabela {
+            border-radius: 7px;
+
+        }
+
+        #btn {
+            font-size: 2.2em;
+            border-radius: 7px;
+            font-weight: bold;
+            box-shadow: 0.5px 0.5px 0.5px black;
+            text-shadow: 0.1px 0.1px 0.1px;
+            position: absolute;
+            top: 90%;
+            left: 90%;
+            margin-bottom: 0;
+            transform: translate(-50%, -50%);
+            color: white;
+            background-color: rgba(220, 179, 2, 1);
+        }
+    </style>
 </head>
+
 <body onload="IniciaGame()">
-    
-    <div id="tabela"  draggable="false">
+
+    <div id="tabela" draggable="false">
         <table border="1" style="border-radius: 7px;">
-        <tr>
-            <td>
-                <img src="imagens/js.jpg">
-            </td>
-            <td>
-                <span id="js_inteiros" style="font-size: 20px;"></span>
-            </td>
-        </tr>
-    </table>
+            <tr>
+                <td>
+                    <img src="imagens/js.jpg">
+                </td>
+                <td>
+                    <span id="js_inteiros" style="font-size: 20px;"></span>
+                </td>
+            </tr>
+        </table>
 
-    <br>
+        <br>
 
-    <table border="1" style="border-radius: 7px;">
-        <tr>
-            <td>
-                <img  src="imagens/js estourado.jpg">
-            </td>
-            <td>
-                <span id="js_estourados" style="font-size: 20px;"></span>
-            </td>
-        </tr>
-    </table>
+        <table border="1" style="border-radius: 7px;">
+            <tr>
+                <td>
+                    <img src="imagens/js estourado.jpg">
+                </td>
+                <td>
+                    <span id="js_estourados" style="font-size: 20px;"></span>
+                </td>
+            </tr>
+        </table>
 
-    <br>
+        <br>
 
-    <table id="t" border="1" style="border-radius: 7px;" >
-       <tr>
-           <td id="cronometro1">
-            <br>
-            <br>
+        <table id="t" border="1" style="border-radius: 7px;">
+            <tr>
+                <td id="cronometro1">
+                    <br>
+                    <br>
 
-            <span id="cronometro" >
+                    <span id="cronometro">
 
-                </span>
-           </td>
-       </tr> 
-           
-    </table>
+                    </span>
+                </td>
+            </tr>
+
+        </table>
     </div>
-    
-    <input id="btn" action="action" onclick="voltaOpt()" type="submit" value="Voltar"/>
+
+    <input id="btn" action="action" onclick="voltaOpt()" type="submit" value="Voltar" />
 
     <div id="fundo"></div>
-    
-    
+
+
     <script src="script.js"></script>
-    
+
 </body>
+
 </html>

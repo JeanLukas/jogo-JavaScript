@@ -1,103 +1,116 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jogo</title>
     <script src="script.js"></script>
     <style>
-       body{
-           background-color: #9D75B4;
-           font: normal 15pt arial;
-       }
+        body {
+            background-color: #9D75B4;
+            font: normal 15pt arial;
+        }
+
         b {
             color: white;
             font: normal 25pt arial;
         }
-        select{
+
+        select {
             font: normal 15pt arial;
             margin-top: 10px;
-            border-radius: 2px ;
+            border-radius: 2px;
             cursor: pointer;
         }
-        select,option:active{
+
+        select,
+        option:active {
             outline: 0;
         }
-        select,option:hover{
+
+        select,
+        option:hover {
             cursor: pointer;
             font: normal 15pt arial;
-            border-radius: 2px ;
-           
+            border-radius: 2px;
+
         }
 
         nav ul li {
-            display:inline-block;
+            display: inline-block;
         }
+
         nav ul li a {
             font-weight: bold;
             color: black;
             text-decoration: none;
-            display:block;
-            padding:38px 20px;
-  
+            display: block;
+            padding: 38px 20px;
+
         }
 
         nav ul li a:hover {
             color: rgb(54, 54, 54);
             color: #5c0101;
             text-decoration: none;
-            display:block;
-            padding:38px 20px;
+            display: block;
+            padding: 38px 20px;
         }
-        #img{
-        	margin-top: -70%;
-            margin-left:80%;
+
+        #img {
+            margin-top: -70%;
+            margin-left: 80%;
         }
-        #play{
-        cursor: pointer;
+
+        #play {
+            cursor: pointer;
         }
-        #play:hover{
+
+        #play:hover {
             filter: invert(1);
             cursor: pointer;
         }
-        .seleciona{
+
+        .seleciona {
             margin: 5% auto 0;
             width: fit-content;
             text-align: center;
             border: 2px solid #000;
             border-radius: 7px;
-            background-color: rgba(0,0,0,0.685);
+            background-color: rgba(0, 0, 0, 0.685);
             color: #fff;
             padding: 50px;
             border: 2px solid #000;
             border-radius: 7px;
-            background-color: rgba(0,0,0,0.685);
+            background-color: rgba(0, 0, 0, 0.685);
             color: #fff;
-            
+
         }
 
-        #fundo{
-        float:left; 
-        width: 640px; 
-        height: 610px; 
-        margin-left: 2px;
-        margin-top: 10px; 
-        background: url('./imagens/Cenario_nivel_1_final.png'); 
-        border-radius: 7px;
-        border: 2px solid #000;
-       }
+        #fundo {
+            float: left;
+            width: 640px;
+            height: 610px;
+            margin-left: 2px;
+            margin-top: 10px;
+            background: url('./imagens/Cenario_nivel_1_final.png');
+            border-radius: 7px;
+            border: 2px solid #000;
+        }
     </style>
 </head>
+
 <body onload="boasVindas()">
     <nav>
         <ul>
 
-         <li><a href="menu.html" class="menu" title="Clique aqui para ler como se joga">Tutorial</a></li>
-         <li><a href="menu.html" title="Clique aqui para ler como foi preparado">Modo de Preparo</a></li>
-         <li><a href="menu.html" title="Clique aqui para ler os componentes utilizados">Itens utilizados</a></li>
+            <li><a href="menu.html" class="menu" title="Clique aqui para ler como se joga">Tutorial</a></li>
+            <li><a href="menu.html" title="Clique aqui para ler como foi preparado">Modo de Preparo</a></li>
+            <li><a href="menu.html" title="Clique aqui para ler os componentes utilizados">Itens utilizados</a></li>
 
         </ul>
-       </nav>
+    </nav>
     <div class="seleciona">
         <p>
             <b>
@@ -111,14 +124,15 @@
                 <option value="5">Nível Extreme</option>
             </select>
         </p>
-        <br/>
-        <div draggable="false">
-        <img id="play" draggable="false" src="imagens/play.png" onclick="iniciaGame()"/>
-    </div>
-    </div>
-    <div draggable="false">
-    <img src="imagens/boa sorte.png" id="img"/>
+        <br />
+        <div>
+            <img id="play" src="imagens/play.png" onclick="iniciaGame()" />
         </div>
+    </div>
+    <div>
+        <img src="imagens/boa sorte.png" id="img" />
+    </div>
     <script src="js/script.js"></script>
 </body>
+
 </html>

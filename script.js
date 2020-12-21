@@ -1,122 +1,126 @@
 let timerId = null; //armazena chamadas da funçao timeout
 
-function boasVindas(){
-alert('Seja Bem Vindo ao meu joguinho, clique no botão verde para proseguir');
+function boasVindas() {
+    alert('Seja Bem Vindo ao meu joguinho, clique no botão verde para proseguir');
 }
 
-function iniciaGame(){
-var nivel_game = document.getElementById('nivel_game').value;
-    
+function iniciaGame() {
+    var nivel_game = document.getElementById('nivel_game').value;
+
     window.location.href = 'game.html?' + nivel_game;
 }
 
-function IniciaGame(){
+function IniciaGame() {
 
-   var url = window.location.search;
+    var url = window.location.search;
 
-   var nivelGame = url.replace("?", "");
+    var nivelGame = url.replace("?", "");
 
-   var tempoSegundos = 0;
+    var tempoSegundos = 0;
 
-   let quantidadeDeJs = 0;
+    let quantidadeDeJs = 0;
 
-   var bg = document.getElementById("fundo");
-   bg.style.backgroundImage = `url('./imagens/cenario_nivel_${nivelGame}.png')`;
+    var bg = document.getElementById("fundo");
+    bg.style.backgroundImage = `url('./imagens/cenario_nivel_${nivelGame}.png')`;
 
 
-   if(nivelGame == 1){//1 nivel 240 segundos + 48 js
-        
-    tempoSegundos = 100;
-    quantidadeDeJs = 50;
-   }
+    if (nivelGame == 1) {//1 nivel 240 segundos + 48 js
 
-   if(nivelGame == 2){//2 nivel 120 segundos + 35 js
-    
-    tempoSegundos = 60;
-    quantidadeDeJs = 60;
-   }
-   
-   if(nivelGame == 3){//3 nivel 60  segundos + 24 js
-    tempoSegundos = 40;
-    quantidadeDeJs = 40;
-   }
+        tempoSegundos = 100;
+        quantidadeDeJs = 50;
+    }
 
-   if(nivelGame == 4){//4 nivel 30  segundos + 14 js
-    tempoSegundos = 30;
-    quantidadeDeJs = 40;
-   }
+    if (nivelGame == 2) {//2 nivel 120 segundos + 35 js
 
-   if(nivelGame == 5){//5 nivel 15  segundos + 7 js
-    tempoSegundos = 15;
-     quantidadeDeJs = 20;
-   }
+        tempoSegundos = 60;
+        quantidadeDeJs = 56;
+    }
 
-   //inserindo os segundos
-   document.getElementById('cronometro').innerHTML = tempoSegundos;
-   
-   //quantidade de baloes
-   let quantidadeJs = quantidadeDeJs;
-   
-   criaJs(quantidadeJs);
+    if (nivelGame == 3) {//3 nivel 60  segundos + 24 js
+        tempoSegundos = 40;
+        quantidadeDeJs = 40;
+    }
 
-   //cria as quantidades
-   document.getElementById('js_inteiros').innerHTML = quantidadeJs;
-   document.getElementById('js_estourados').innerHTML = 0;
+    if (nivelGame == 4) {//4 nivel 30  segundos + 14 js
+        tempoSegundos = 30;
+        quantidadeDeJs = 40;
+    }
 
-   contagemTempo(tempoSegundos + 1);
+    if (nivelGame == 5) {//5 nivel 15  segundos + 7 js
+        tempoSegundos = 15;
+        quantidadeDeJs = 20;
+    }
 
-   }
-   
-   function contagemTempo(segundos){
+    //inserindo os segundos
+    document.getElementById('cronometro').innerHTML = tempoSegundos;
 
-        segundos = segundos - 1;
+    //quantidade de baloes
+    let quantidadeJs = quantidadeDeJs;
 
-        if(segundos == -1) {
-            clearTimeout(timerId); //para o tempo
-            gameOver();
-            return false;
-        }
+    criaJs(quantidadeJs);
+
+    //cria as quantidades
+    document.getElementById('js_inteiros').innerHTML = quantidadeJs;
+    document.getElementById('js_estourados').innerHTML = 0;
+
+    contagemTempo(tempoSegundos + 1);
+
+}
+
+function contagemTempo(segundos) {
+
+    segundos = segundos - 1;
+
+    if (segundos == -1) {
+        clearTimeout(timerId); //para o tempo
+        gameOver();
+        return false;
+    }
 
     document.getElementById('cronometro').innerHTML = segundos;
 
-    timerId = setTimeout("contagemTempo("+segundos+")", 1000);
+    timerId = setTimeout("contagemTempo(" + segundos + ")", 1000);
 
-   }
+}
 
-function gameOver(){
-    
+function gameOver() {
+
     alert('Fim de jogo, você perdeu.');
 
     removeEventoEstourar();
 
-}situacaoJogo;
+} situacaoJogo;
 
-function criaJs(quantidadeJs){
+function criaJs(quantidadeJs) {
 
-        for( let i = 1; i <= quantidadeJs; i++) {
+    for (let i = 1; i <= quantidadeJs; i++) {
 
-            let javascript = document.createElement("img");
-            javascript.src = 'imagens/jssmall1.png';
-            javascript.style.margin = '10px';
-            javascript.id = 'b' + i;
-            javascript.onclick = function(){ estourar(this) }
-            document.getElementById('fundo').appendChild(javascript);
-        }
+        let javascript = document.createElement("div");
+        javascript.style.background = 'url("imagens/jssmall1.png")';
+        javascript.style.margin = '10px';
+        javascript.style.width = "60px";
+        javascript.style.height = "60px";
+        javascript.style.cursor = "pointer";
+        javascript.style.border = "none";
+        javascript.id = 'b' + i;
+        javascript.onclick = function () { estourar(this) }
+        document.getElementById('fundo').appendChild(javascript);
+
+    }
 }
 
 function estourar(e) {
     let idJs = e.id;
 
     document.getElementById(idJs).setAttribute("onclick", "");
-    document.getElementById(idJs).src = 'imagens/jssmallestourado.png';
-    
+    document.getElementById(idJs).style.background = "url('imagens/jssmallestourado.png')";
+
     pontuacao(-1);
 }
-
-function pontuacao(acao){
+function pontuacao(acao) {
     var jsInteiros = document.getElementById('js_inteiros').innerHTML;
     var jsEstourados = document.getElementById('js_estourados').innerHTML;
-    
+
     jsInteiros = parseInt(jsInteiros);
     jsEstourados = parseInt(jsEstourados);
 
@@ -128,66 +132,35 @@ function pontuacao(acao){
 
     situacaoJogo(jsInteiros);
 }
-function situacaoJogo(jsInteiros){
-    if(jsInteiros == 0){
+function situacaoJogo(jsInteiros) {
+    if (jsInteiros == 0) {
         alert('Parabéns, você venceu');
         paraJogo();
-        
+
     }
 }
 
-function removeEventoEstourar(){
+function removeEventoEstourar() {
 
-    var i = 1 ;
+    var i = 1;
 
-    while(document.getElementById('b' + 1)){
-       
+    while (document.getElementById('b' + 1)) {
+
         document.getElementById('b' + 1).onclick = '';
-        i++   ;
+        i++;
     }
 }
-/* criar funçao para mudar cenario no nivel 2
- function mudaCenario(){
-     if(nivelGame == 2){
-         let javascript = document.createElement("img");
-            javascript.src = 'imagens/jssmall1.png';
-            javascript.style.margin = '10px';
-            javascript.id = 'b' + i;
-            javascript.onclick = function(){ estourar(this) }
-             document.getElementById('fundo1').appendChild(javascript);
-         
-          
-          
-     }
- }
- */
 
- /*muda simbolo para html no 3
- function mudaFigura(){
-     if(nivelGame == 3){
-
-     }
- }
- */
-/* criar funçao para mudar cenario no nivel 4
- function mudaCenario1(){
-     if(nivelGame == 4){
-         
-     }
- }
- */
-
- /*muda simbolo para js no 5
- function mudaFigura1(){
-     if(nivelGame == 5){
-
-     }
- }
- */
+function mudaCorFundo() {
+    if (nivelGame == 2){
+        var mudaCor = window.document.body;
+        mudaCor.style.backgroundColor = "red"
+    }
+}
 function voltaOpt() {
     window.history.go(-1);
-     return false;
-    }
+    return false;
+}
 
 function paraJogo() {
     clearTimeout(timerId);
