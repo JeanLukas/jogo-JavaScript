@@ -1,97 +1,95 @@
 let timerId = null; //armazena chamadas da funçao timeout
 
-//alerta de
-function boasVindas() {
-    alert('Seja Bem Vindo ao meu joguinho, clique no botão verde para proseguir');
+function boasVindas(){
+alert('Seja Bem Vindo ao meu joguinho, clique no botão verde para proseguir');
 }
 
-function iniciaGame() {
-    var nivel_game = document.getElementById('nivel_game').value;
-
+function iniciaGame(){
+var nivel_game = document.getElementById('nivel_game').value;
+    
     window.location.href = 'game.html?' + nivel_game;
 }
 
-function IniciaGame() {
-
+function IniciaGame(){
     var url = window.location.search;
     var nivelGame = url.replace("?", "");
+   var url = window.location.search;
 
-    var tempoSegundos = 0;
-    let quantidadeDeJs = 0;
+   var nivelGame = url.replace("?", "");
 
-    var bg = document.getElementById("fundo");
+   var tempoSegundos = 0;
+
+   let quantidadeDeJs = 0;
+
+   var bg = document.getElementById("fundo");
     bg.style.backgroundImage = `url('./imagens/cenario_nivel_${nivelGame}.png')`;
+   if(nivelGame == 1){//1 nivel 240 segundos + 48 js
+        
+    tempoSegundos = 240;
+    quantidadeDeJs = 48;
+   }
 
+   if(nivelGame == 2){//2 nivel 120 segundos + 35 js
+    tempoSegundos = 120;
+    quantidadeDeJs = 35;
+   }
+   
+   if(nivelGame == 3){//3 nivel 60  segundos + 24 js
+    tempoSegundos = 60;
+    quantidadeDeJs = 24;
+   }
 
-    if (nivelGame == 1) {//1 nivel 240 segundos + 48 js
+   if(nivelGame == 4){//4 nivel 30  segundos + 14 js
+    tempoSegundos = 30;
+    quantidadeDeJs = 14;
+   }
 
-        tempoSegundos = 100;
-        quantidadeDeJs = 50;
-    }
+   if(nivelGame == 5){//5 nivel 15  segundos + 7 js
+    tempoSegundos = 15;
+     quantidadeDeJs = 7;
+   }
 
-    if (nivelGame == 2) {//2 nivel 120 segundos + 35 js
+   //inserindo os segundos
+   document.getElementById('cronometro').innerHTML = tempoSegundos;
+   
+   //quantidade de baloes
+   let quantidadeJs = quantidadeDeJs;
+   
+   criaJs(quantidadeJs);
 
-        tempoSegundos = 60;
-        quantidadeDeJs = 56;
-    }
+   //cria as quantidades
+   document.getElementById('js_inteiros').innerHTML = quantidadeJs;
+   document.getElementById('js_estourados').innerHTML = 0;
 
-    if (nivelGame == 3) {//3 nivel 60  segundos + 24 js
-        tempoSegundos = 40;
-        quantidadeDeJs = 40;
-    }
+   contagemTempo(tempoSegundos + 1);
 
-    if (nivelGame == 4) {//4 nivel 30  segundos + 14 js
-        tempoSegundos = 30;
-        quantidadeDeJs = 40;
-    }
+   }
+   
+   function contagemTempo(segundos){
 
-    if (nivelGame == 5) {//5 nivel 15  segundos + 7 js
-        tempoSegundos = 15;
-        quantidadeDeJs = 20;
-    }
+        segundos = segundos - 1;
 
-    //inserindo os segundos
-    document.getElementById('cronometro').innerHTML = tempoSegundos;
+        if(segundos == -1) {
+            clearTimeout(timerId); //para o tempo
+            gameOver();
+            return false;
+        }
 
-    //quantidade de baloes
-    let quantidadeJs = quantidadeDeJs;
-
-    criaJs(quantidadeJs);
-
-    //cria as quantidades
-    document.getElementById('icon_inteiros').innerHTML = quantidadeJs;
-    document.getElementById('icon_estourados').innerHTML = 0;
-
-    contagemTempo(tempoSegundos + 1);
-
-}
-
-//contanto os segundos 
-function contagemTempo(segundos) {
-
-    segundos = segundos - 1;
-
-    if (segundos == -1) {
-        clearTimeout(timerId); //para o tempo
-        gameOver();
-        return false;
-    }
-    // mostra os segundos
     document.getElementById('cronometro').innerHTML = segundos;
 
-    timerId = setTimeout("contagemTempo(" + segundos + ")", 1000);
+    timerId = setTimeout("contagemTempo("+segundos+")", 1000);
 
-}
+   }
 
-function gameOver() {
-
+function gameOver(){
+    
     alert('Fim de jogo, você perdeu.');
 
     removeEventoEstourar();
 
-} situacaoJogo;
+}situacaoJogo;
 
-function criaJs(quantidadeJs) {
+function criaJs(quantidadeJs){
     var url = window.location.search;
     var nivelGame = url.replace("?", "");
 
@@ -108,7 +106,6 @@ function criaJs(quantidadeJs) {
     }else if(nivelGame == 5){
         image = "level_5";
     }
- 
     for (let i = 1; i <= quantidadeJs; i++) {
         let javascript = document.createElement("div");
         javascript.style.background = `url("imagens/${image}.png")`; // esse ${} chama tempplate string, tem que usar `` aos invez de ''
@@ -130,47 +127,78 @@ function estourar(e) {
     let idJs = e.id;
 
     document.getElementById(idJs).setAttribute("onclick", "");
-    document.getElementById(idJs).style.background = "url('imagens/pow1.png')";
+    document.getElementById(idJs).style.background = "url('imagens/pow1.png')"
     
     pontuacao(-1);
 }
-function pontuacao(acao) {
-    var inteiros = document.getElementById('icon_inteiros').innerHTML;
-    var estourados = document.getElementById('icon_estourados').innerHTML;
 
-    inteiros = parseInt(icon_inteiros);
-    estourados = parseInt(estourados);
+function pontuacao(acao){
+    var jsInteiros = document.getElementById('js_inteiros').innerHTML;
+    var jsEstourados = document.getElementById('js_estourados').innerHTML;
+    
+    jsInteiros = parseInt(jsInteiros);
+    jsEstourados = parseInt(jsEstourados);
 
-    inteiros = inteiros + acao;
-    estourados = estourados - acao;
+    jsInteiros = jsInteiros + acao;
+    jsEstourados = jsEstourados - acao;
 
-    document.getElementById('inteiros').innerHTML = inteiros;
-    document.getElementById('estourados').innerHTML = estourados;
+    document.getElementById('js_inteiros').innerHTML = jsInteiros;
+    document.getElementById('js_estourados').innerHTML = jsEstourados;
 
-    situacaoJogo(inteiros);
+    situacaoJogo(jsInteiros);
 }
-function situacaoJogo(inteiros) {
-    if (inteiros == 0) {
+function situacaoJogo(jsInteiros){
+    if(jsInteiros == 0){
         alert('Parabéns, você venceu');
         paraJogo();
-
+        
     }
 }
 
-function removeEventoEstourar() {
+function removeEventoEstourar(){
 
-    var i = 1;
+    var i = 1 ;
 
-    while (document.getElementById('b' + 1)) {
-
+    while(document.getElementById('b' + 1)){
+       
         document.getElementById('b' + 1).onclick = '';
-        i++;
+        i++   ;
     }
 }
+/* criar funçao para mudar cenario no nivel 3
+ function mudaCenario(){
+     if(nivelGame == 3){
+         
+     }
+ }
+ */
+
+ /*muda simbolo para html no 3
+ function mudaFigura(){
+     if(nivelGame == 3){
+
+     }
+ }
+ */
+/* criar funçao para mudar cenario no nivel 5
+ function mudaCenario1(){
+     if(nivelGame == 5){
+         
+     }
+ }
+ */
+
+ /*muda simbolo para js no 5
+ function mudaFigura1(){
+     if(nivelGame == 5){
+
+     }
+ }
+ */
 function voltaOpt() {
     window.history.go(-1);
-    return false;
-}
+     return false;
+    }
 
 function paraJogo() {
     clearTimeout(timerId);
