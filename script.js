@@ -58,8 +58,8 @@ function IniciaGame(){
    criaJs(quantidadeJs);
 
    //cria as quantidades
-   document.getElementById('js_inteiros').innerHTML = quantidadeJs;
-   document.getElementById('js_estourados').innerHTML = 0;
+   document.getElementById('icon_inteiros').innerHTML = quantidadeJs;
+   document.getElementById('icon_estourados').innerHTML = 0;
 
    contagemTempo(tempoSegundos + 1);
 
@@ -133,8 +133,8 @@ function estourar(e) {
 }
 
 function pontuacao(acao){
-    var jsInteiros = document.getElementById('js_inteiros').innerHTML;
-    var jsEstourados = document.getElementById('js_estourados').innerHTML;
+    var jsInteiros = document.getElementById('icon_inteiros').innerHTML;
+    var jsEstourados = document.getElementById('icon_estourados').innerHTML;
     
     jsInteiros = parseInt(jsInteiros);
     jsEstourados = parseInt(jsEstourados);
@@ -142,8 +142,8 @@ function pontuacao(acao){
     jsInteiros = jsInteiros + acao;
     jsEstourados = jsEstourados - acao;
 
-    document.getElementById('js_inteiros').innerHTML = jsInteiros;
-    document.getElementById('js_estourados').innerHTML = jsEstourados;
+    document.getElementById('icon_inteiros').innerHTML = jsInteiros;
+    document.getElementById('icon_estourados').innerHTML = jsEstourados;
 
     situacaoJogo(jsInteiros);
 }
@@ -165,36 +165,6 @@ function removeEventoEstourar(){
         i++   ;
     }
 }
-/* criar funçao para mudar cenario no nivel 3
- function mudaCenario(){
-     if(nivelGame == 3){
-         
-     }
- }
- */
-
- /*muda simbolo para html no 3
- function mudaFigura(){
-     if(nivelGame == 3){
-
-     }
- }
- */
-/* criar funçao para mudar cenario no nivel 5
- function mudaCenario1(){
-     if(nivelGame == 5){
-         
-     }
- }
- */
-
- /*muda simbolo para js no 5
- function mudaFigura1(){
-     if(nivelGame == 5){
-
-     }
- }
- */
 function voltaOpt() {
     window.history.go(-1);
      return false;
