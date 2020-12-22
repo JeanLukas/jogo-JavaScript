@@ -1,5 +1,6 @@
 let timerId = null; //armazena chamadas da funçao timeout
 
+//alerta de
 function boasVindas() {
     alert('Seja Bem Vindo ao meu joguinho, clique no botão verde para proseguir');
 }
@@ -58,13 +59,14 @@ function IniciaGame() {
     criaJs(quantidadeJs);
 
     //cria as quantidades
-    document.getElementById('js_inteiros').innerHTML = quantidadeJs;
-    document.getElementById('js_estourados').innerHTML = 0;
+    document.getElementById('icon_inteiros').innerHTML = quantidadeJs;
+    document.getElementById('icon_estourados').innerHTML = 0;
 
     contagemTempo(tempoSegundos + 1);
 
 }
 
+//contanto os segundos 
 function contagemTempo(segundos) {
 
     segundos = segundos - 1;
@@ -74,7 +76,7 @@ function contagemTempo(segundos) {
         gameOver();
         return false;
     }
-
+    // mostra os segundos
     document.getElementById('cronometro').innerHTML = segundos;
 
     timerId = setTimeout("contagemTempo(" + segundos + ")", 1000);
@@ -127,40 +129,28 @@ function criaJs(quantidadeJs) {
 function estourar(e) {
     let idJs = e.id;
 
-    var img = "";
-    if(nivelGame == 1){
-        img  = "level_1";
-    }else if(nivelGame == 2){
-        img  = "level_2_boom";
-    }else if(nivelGame == 3){
-        img = "level_3_boom";
-    }else if(nivelGame == 4){
-        img = "level_4";
-    }else if(nivelGame == 5){
-        img = "level_5_boom";
-    }
     document.getElementById(idJs).setAttribute("onclick", "");
-    document.getElementById(idJs).style.background = `url("imagens/${img}.png")`
+    document.getElementById(idJs).style.background = "url('imagens/pow1.png')";
     
     pontuacao(-1);
 }
 function pontuacao(acao) {
-    var jsInteiros = document.getElementById('js_inteiros').innerHTML;
-    var jsEstourados = document.getElementById('js_estourados').innerHTML;
+    var inteiros = document.getElementById('icon_inteiros').innerHTML;
+    var estourados = document.getElementById('icon_estourados').innerHTML;
 
-    jsInteiros = parseInt(jsInteiros);
-    jsEstourados = parseInt(jsEstourados);
+    inteiros = parseInt(icon_inteiros);
+    estourados = parseInt(estourados);
 
-    jsInteiros = jsInteiros + acao;
-    jsEstourados = jsEstourados - acao;
+    inteiros = inteiros + acao;
+    estourados = estourados - acao;
 
-    document.getElementById('js_inteiros').innerHTML = jsInteiros;
-    document.getElementById('js_estourados').innerHTML = jsEstourados;
+    document.getElementById('inteiros').innerHTML = inteiros;
+    document.getElementById('estourados').innerHTML = estourados;
 
-    situacaoJogo(jsInteiros);
+    situacaoJogo(inteiros);
 }
-function situacaoJogo(jsInteiros) {
-    if (jsInteiros == 0) {
+function situacaoJogo(inteiros) {
+    if (inteiros == 0) {
         alert('Parabéns, você venceu');
         paraJogo();
 
