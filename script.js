@@ -1,15 +1,18 @@
 let timerId = null; //armazena chamadas da funçao timeout
 
+//mensagem de boas vindas 
 function boasVindas(){
 alert('Seja Bem Vindo ao meu joguinho, clique no botão verde para proseguir');
 }
 
+//chama do index pro game
 function iniciaGame(){
 var nivel_game = document.getElementById('nivel_game').value;
     
     window.location.href = 'game.html?' + nivel_game;
 }
 
+//começa o game
 function IniciaGame(){
     var url = window.location.search;
     var nivelGame = url.replace("?", "");
@@ -23,30 +26,30 @@ function IniciaGame(){
 
    var bg = document.getElementById("fundo");
     bg.style.backgroundImage = `url('./imagens/cenario_nivel_${nivelGame}.png')`;
-   if(nivelGame == 1){//1 nivel 240 segundos + 48 js
+   if(nivelGame == 1){//1 nivel 60 segundos + 48 js
         
-    tempoSegundos = 240;
+    tempoSegundos = 60;
     quantidadeDeJs = 48;
    }
 
-   if(nivelGame == 2){//2 nivel 120 segundos + 35 js
-    tempoSegundos = 120;
+   if(nivelGame == 2){//2 nivel 50 segundos + 35 js
+    tempoSegundos = 50;
     quantidadeDeJs = 35;
    }
    
-   if(nivelGame == 3){//3 nivel 60  segundos + 24 js
-    tempoSegundos = 60;
-    quantidadeDeJs = 24;
-   }
-
-   if(nivelGame == 4){//4 nivel 30  segundos + 14 js
+   if(nivelGame == 3){//3 nivel 30  segundos + 35 js
     tempoSegundos = 30;
-    quantidadeDeJs = 14;
+    quantidadeDeJs = 35;
    }
 
-   if(nivelGame == 5){//5 nivel 15  segundos + 7 js
+   if(nivelGame == 4){//4 nivel 20  segundos + 30 js
+    tempoSegundos = 20;
+    quantidadeDeJs = 30;
+   }
+
+   if(nivelGame == 5){//5 nivel 15  segundos + 40 js
     tempoSegundos = 15;
-     quantidadeDeJs = 7;
+     quantidadeDeJs = 40;
    }
 
    //inserindo os segundos
@@ -65,6 +68,7 @@ function IniciaGame(){
 
    }
    
+   //conta os segundos
    function contagemTempo(segundos){
 
         segundos = segundos - 1;
@@ -81,6 +85,7 @@ function IniciaGame(){
 
    }
 
+   //caso você nao consigo acertar tudo perde
 function gameOver(){
     
     alert('Fim de jogo, você perdeu.');
@@ -89,6 +94,7 @@ function gameOver(){
 
 }situacaoJogo;
 
+//cria a quantidade e cria as medidas das imagens e muda o mapa no nivel
 function criaJs(quantidadeJs){
     var url = window.location.search;
     var nivelGame = url.replace("?", "");
@@ -123,6 +129,7 @@ function criaJs(quantidadeJs){
     }
 }
 
+//muda o icone quando "estoura"
 function estourar(e) {
     let idJs = e.id;
 
@@ -132,6 +139,7 @@ function estourar(e) {
     pontuacao(-1);
 }
 
+//muda a pontuaçao
 function pontuacao(acao){
     var jsInteiros = document.getElementById('icon_inteiros').innerHTML;
     var jsEstourados = document.getElementById('icon_estourados').innerHTML;
@@ -147,6 +155,7 @@ function pontuacao(acao){
 
     situacaoJogo(jsInteiros);
 }
+//aparece quando termina antes do tempo
 function situacaoJogo(jsInteiros){
     if(jsInteiros == 0){
         alert('Parabéns, você venceu');
@@ -154,7 +163,7 @@ function situacaoJogo(jsInteiros){
         
     }
 }
-
+//funçao para nao poder clicar mais 
 function removeEventoEstourar(){
 
     var i = 1 ;
@@ -165,11 +174,13 @@ function removeEventoEstourar(){
         i++   ;
     }
 }
+//botao para voltar no menu de escolher
 function voltaOpt() {
     window.history.go(-1);
      return false;
     }
 
+//para o jogo
 function paraJogo() {
     clearTimeout(timerId);
 }
