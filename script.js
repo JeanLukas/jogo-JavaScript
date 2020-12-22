@@ -13,11 +13,9 @@ function iniciaGame() {
 function IniciaGame() {
 
     var url = window.location.search;
-
     var nivelGame = url.replace("?", "");
 
     var tempoSegundos = 0;
-
     let quantidadeDeJs = 0;
 
     var bg = document.getElementById("fundo");
@@ -92,18 +90,35 @@ function gameOver() {
 } situacaoJogo;
 
 function criaJs(quantidadeJs) {
+    var url = window.location.search;
+    var nivelGame = url.replace("?", "");
 
+  
+    var image = "";
+    if(nivelGame == 1){
+        image  = "level_1";
+    }else if(nivelGame == 2){
+        image  = "level_2";
+    }else if(nivelGame == 3){
+        image = "level_3";
+    }else if(nivelGame == 4){
+        image = "level_4";
+    }else if(nivelGame == 5){
+        image = "level_5";
+    }
+ 
     for (let i = 1; i <= quantidadeJs; i++) {
-
         let javascript = document.createElement("div");
-        javascript.style.background = 'url("imagens/jssmall1.png")';
+        javascript.style.background = `url("imagens/${image}.png")`; // esse ${} chama tempplate string, tem que usar `` aos invez de ''
         javascript.style.margin = '10px';
         javascript.style.width = "60px";
         javascript.style.height = "60px";
         javascript.style.cursor = "pointer";
         javascript.style.border = "none";
         javascript.id = 'b' + i;
-        javascript.onclick = function () { estourar(this) }
+        javascript.onclick = function () { 
+            estourar(this);
+         }
         document.getElementById('fundo').appendChild(javascript);
 
     }
@@ -112,9 +127,21 @@ function criaJs(quantidadeJs) {
 function estourar(e) {
     let idJs = e.id;
 
+    var img = "";
+    if(nivelGame == 1){
+        img  = "level_1";
+    }else if(nivelGame == 2){
+        img  = "level_2_boom";
+    }else if(nivelGame == 3){
+        img = "level_3_boom";
+    }else if(nivelGame == 4){
+        img = "level_4";
+    }else if(nivelGame == 5){
+        img = "level_5_boom";
+    }
     document.getElementById(idJs).setAttribute("onclick", "");
-    document.getElementById(idJs).style.background = "url('imagens/jssmallestourado.png')";
-
+    document.getElementById(idJs).style.background = `url("imagens/${img}.png")`
+    
     pontuacao(-1);
 }
 function pontuacao(acao) {
@@ -148,13 +175,6 @@ function removeEventoEstourar() {
 
         document.getElementById('b' + 1).onclick = '';
         i++;
-    }
-}
-
-function mudaCorFundo() {
-    if (nivelGame == 2){
-        var mudaCor = window.document.body;
-        mudaCor.style.backgroundColor = "red"
     }
 }
 function voltaOpt() {
